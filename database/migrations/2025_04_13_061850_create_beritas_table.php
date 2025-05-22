@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('beritas', function (Blueprint $table) {
-            $table->id();
+            $table->string('title');  // Judul berita
+            $table->text('description');  // Deskripsi berita
+            $table->string('image_path')->nullable();  // Lokasi gambar (opsional)
             $table->timestamps();
         });
     }
@@ -23,6 +25,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('beritas');
-
     }
 };

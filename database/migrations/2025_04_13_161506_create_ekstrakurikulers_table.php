@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ekstrakurikulers', function (Blueprint $table) {
             $table->id();
+            $table->string('ekskuls');  // Tambahkan kolom untuk nama ekstrakurikuler
             $table->timestamps();
         });
     }

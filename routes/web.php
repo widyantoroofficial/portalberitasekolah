@@ -22,7 +22,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard - Hanya bisa diakses oleh user yang sudah login
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard']); // Untuk menampilkan data berita dan prestasi
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('/admin/dashboard', [DashboardController::class, 'index']); // Untuk menampilkan halaman admin dashboard
 
 
@@ -33,8 +33,8 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index']); // Untuk 
     Route::resource('prestasi', PrestasiController::class);
 
     // Password reset routes (forgot password)
-    Route::get('/forgot-password', [PasswordController::class, 'showLinkRequestForm'])->name('password.request');
-    Route::post('/forgot-password', [PasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/forgot-password', [App\Http\Controllers\AuthController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/forgot-password', [App\Http\Controllers\AuthController::class, 'sendResetLinkEmail'])->name('password.email');
 });
 
 ?>

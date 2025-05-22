@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('prestasis', function (Blueprint $table) {
             $table->id();
+            $table->date('date');  // Menyimpan tanggal prestasi
+            $table->string('name');  // Nama prestasi
+            $table->text('description');  // Deskripsi prestasi
+            $table->string('student_name');  // Nama siswa yang mendapatkan prestasi
+            $table->string('image_path')->nullable();  // Lokasi gambar (opsional)
             $table->timestamps();
         });
     }
